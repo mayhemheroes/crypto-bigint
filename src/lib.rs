@@ -151,7 +151,7 @@
 //! [`Rem`]: core::ops::Rem
 //! [`Sub`]: core::ops::Sub
 
-#[cfg(all(feature = "alloc", test))]
+#[cfg(feature = "alloc")]
 extern crate alloc;
 
 #[macro_use]
@@ -165,6 +165,8 @@ mod limb;
 mod non_zero;
 mod traits;
 mod uint;
+#[cfg(feature = "alloc")]
+mod uint_vec;
 mod wrapping;
 
 pub use crate::{
@@ -178,6 +180,9 @@ pub use crate::{
     wrapping::Wrapping,
 };
 pub use subtle;
+
+#[cfg(feature = "alloc")]
+pub use crate::uint_vec::UintVec;
 
 #[cfg(feature = "generic-array")]
 pub use {
