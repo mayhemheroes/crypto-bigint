@@ -11,6 +11,7 @@ RUN cargo install cargo-fuzz
 ADD . /crypto-bigint/
 
 WORKDIR /crypto-bigint/fuzz/
+RUN cargo +nightly update -p proc-macro2
 
 RUN cargo +nightly fuzz build
 
